@@ -13,6 +13,5 @@ e exibindo detalhes de cada um, com leve paginação.</p>
     <img src="https://img.shields.io/static/v1?label=BOOTSTRAP&message=5&color=6930c3&style=for-the-badge&logo=ghost"/>
 </p>
 
-
-https://github.com/caiosfg/Pokedex/tree/main/pokedex/public/img_1.jpg
-https://github.com/caiosfg/Pokedex/tree/main/pokedex/public/img_2.jpg
+![Show](https://github.com/caiosfg/Pokedex/blob/main/pokedex/public/img/img_1.jpg)
+![Details](https://github.com/caiosfg/Pokedex/blob/main/pokedex/public/img/img_2.jpg)
