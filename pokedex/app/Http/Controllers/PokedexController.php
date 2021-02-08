@@ -11,18 +11,27 @@ class PokedexController extends Controller
 
         $pokemons = array();
 
-        for ($i = 1; $i <= 5; $i++) {
+        for ($i = 1; $i <= 15; $i++) {
             $response = Http::get("https://pokeapi.co/api/v2/pokemon/{$i}");
 
             if(isset($response)){
-                array_push($pokemons, $response['name']);
+                $poke = [];
+                $type = [];
+
+                $poke['id'] = $response['id'];
+                $poke['nome'] = $response['name'];
+
+                foreach($response['types'] as $key => $row){
+
+                  $poke['color'] = $row['type']['name'];
+                  array_push($type,  $row['type']['name']);
+                }
+
+                $poke['type'] = implode(" ", $type);
+
+                array_push($pokemons, $poke);
             }
-
-        //    dd($response->json()); 
         }
-
-        // dd($response->json());
-        // echo $response['name'];
 
         return view('show',['pokemons' => $pokemons]);
 
