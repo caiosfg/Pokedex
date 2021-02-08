@@ -20,8 +20,6 @@
     </head>
     <body>
        @yield('content')
-      <footer>
-        <p>Pokedex &copy; 2021</p>
-      </footer>
+        <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
     </body>
 </html>

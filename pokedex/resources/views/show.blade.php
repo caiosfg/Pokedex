@@ -13,6 +13,7 @@
                 <p class="card-subtitle">
                     {{ $pokemon['type'] }}
                 </p>
+                <a href="/show/{{ $pokemon['id'] }}" class="btn btn-light">Ver Detalhes</a>
               </li>
         @endforeach
         </ul>

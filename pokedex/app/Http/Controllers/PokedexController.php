@@ -37,9 +37,38 @@ class PokedexController extends Controller
 
     }
     public function getId($id){
-        $response = Http::get('https://pokeapi.co/api/v2/pokemon/{{$id}}');
 
-        dd($response->json());
+        $response = Http::get("https://pokeapi.co/api/v2/pokemon/{$id}");
+
+        $pokemons = array();
+
+            if(isset($response)){
+                $poke = [];
+                $type = [];
+                $moves = [];
+
+                $poke['id'] = $response['id'];
+                $poke['nome'] = $response['name'];
+                $poke['height'] = $response['height'];
+                $poke['weight'] = $response['weight'];
+
+                foreach($response['types'] as $key => $row){
+                  $poke['color'] = $row['type']['name'];
+                  array_push($type,  $row['type']['name']);
+                }
+
+                foreach($response['moves'] as $key => $row){
+                  array_push($moves,  $row['move']['name']);
+                }
+
+                $poke['type'] = implode(" ", $type);
+                $poke['moves'] = implode(", ", $moves);
+
+                array_push($pokemons, $poke);
+            }
+        
+
+        return view('choose',['pokemons' => $pokemons]);
 
     }
 }
