@@ -7,11 +7,20 @@ use Illuminate\Support\Facades\Http;
 
 class PokedexController extends Controller
 {
-    public function show(){
+    public function show($id = null){
 
         $pokemons = array();
 
-        for ($i = 1; $i <= 15; $i++) {
+        if(isset($id)){
+            $count = $id;
+            $limit = $count+14;
+        }else{
+            $count = 1;
+            $limit = 15;
+        }
+        
+
+        for ($i = $count; $i <= $limit; $i++) {
             $response = Http::get("https://pokeapi.co/api/v2/pokemon/{$i}");
 
             if(isset($response)){
@@ -33,7 +42,7 @@ class PokedexController extends Controller
             }
         }
 
-        return view('show',['pokemons' => $pokemons]);
+        return view('show',['pokemons' => $pokemons, 'end' => end($pokemons)]);
 
     }
     public function getId($id){

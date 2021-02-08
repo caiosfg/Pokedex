@@ -15,4 +15,5 @@ use App\Http\Controllers\PokedexController;
 */
 
 Route::get('/', [PokedexController::class, 'show']); 
+Route::get('/{id}', [PokedexController::class, 'show']); 
 Route::get('/show/{id}', [PokedexController::class, 'getId']); 

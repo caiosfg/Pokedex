@@ -5,6 +5,12 @@
 @section('content')
     <div class="container">
         <h1>Pokedex</h1>
+        <nav aria-label="pagination_show">
+            <ul class="pagination">
+                <li class="page-item"><a class="page-link" href="/">Início</a></li>
+                <li class="page-item"><a class="page-link" href="/{{$end['id']}}">Próximo</a></li>
+            </ul>
+        </nav>  
         <ul data-js="pokedex" class="pokedex">
         @foreach($pokemons as $pokemon)
               <li class="card {{ $pokemon['color'] }}">
